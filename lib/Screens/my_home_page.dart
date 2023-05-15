@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ebook_ui/constant/app_colors.dart' as AppColors;
+import 'dart:convert';
+
+import 'package:flutter/services.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -9,6 +12,23 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List? popularBooks;
+  ReadData() async {
+    DefaultAssetBundle.of(context)
+        .loadString("json/popularBooks.json")
+        .then((s) {
+      setState(() {
+        popularBooks = json.decode(s);
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    ReadData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -62,7 +82,9 @@ class _HomePageState extends State<HomePage> {
                         child: Container(
                           height: 180,
                           child: PageView.builder(
-                              itemCount: 5,
+                              itemCount: popularBooks == null
+                                  ? 0
+                                  : popularBooks!.length,
                               controller: PageController(viewportFraction: 0.8),
                               itemBuilder: (BuildContext context, int index) {
                                 return Container(
@@ -72,7 +94,8 @@ class _HomePageState extends State<HomePage> {
                                       borderRadius: BorderRadius.circular(15),
                                       image: DecorationImage(
                                           fit: BoxFit.fill,
-                                          image: AssetImage("img/pic1.png"))),
+                                          image: AssetImage(
+                                              popularBooks![index]["img"]))),
                                 );
                               }),
                         ),

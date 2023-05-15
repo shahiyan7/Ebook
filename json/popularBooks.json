@@ -1,0 +1,37 @@
+[
+  {
+    "rating": "4.5",
+    "title": "TWICE SHY",
+    "text": "SARAH HOGLE",
+    "img": "img/pic1.png",
+    "audio": "Voices.mp3"
+  },
+  {
+    "rating": "4.6",
+    "title": "THE DATING DARE",
+    "text": "JAYCE LEE",
+    "img": "img/pic2.png",
+    "audio": "June - Bobby Richards.mp3"
+  },
+  {
+    "rating": "4.5",
+    "title": "FIRST LOVE TAKE TWO",
+    "text": "SAJNI",
+    "img": "img/pic3.png",
+    "audio": "Muriel - Bobby Richards.mp3"
+  },
+  {
+    "rating": "4.5",
+    "title": "THINK BIGGER",
+    "text": "SHAHIYAN",
+    "img": "img/pic4.png",
+    "audio": "Piano Trap.mp3"
+  },
+  {
+    "rating": "4.5",
+    "title": "ATOMIC HABIT",
+    "text": "SHAHIYAN",
+    "img": "img/pic5.png",
+    "audio": "Piano Trap.mp3"
+  }
+]
