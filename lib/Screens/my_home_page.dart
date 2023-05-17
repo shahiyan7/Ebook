@@ -11,7 +11,11 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
+    late ScrollController _scrollController;
+   late TabController _tabController;
+
   List? popularBooks;
   ReadData() async {
     DefaultAssetBundle.of(context)
@@ -26,6 +30,8 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+    _tabController = TabController(length: 3, vsync: this);
+    _scrollController = ScrollController();
     ReadData();
   }
 
@@ -101,7 +107,19 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                     ],
-                  ))
+                  )),
+              Expanded(
+                  child: NestedScrollView(
+                controller: _scrollController,
+                headerSliverBuilder: (BuildContext context, bool isScroll) {
+                  return [
+                    SliverAppBar(
+                      pinned: true,
+                    )
+                  ];
+                },
+                body: Text("hii"),
+              ))
             ],
           ),
         ),
